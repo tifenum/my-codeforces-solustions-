@@ -19,7 +19,9 @@
 #include <stack>
 #include <iomanip>
 #include <fstream>
+ 
 using namespace std;
+ 
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> p32;
@@ -51,32 +53,21 @@ double eps = 1e-12;
  
 
 void solve() {
-    string s;
-    int u = 0, l = 0;
-    cin >> s;
-
-    for (char &c : s) { 
-        if (isupper(c))
-            u++;
-        else
-            l++;
-    }
-
-    if (l >= u) {
-        for (char &c : s) { 
-            c = tolower(c);
+    int n,s=1;
+    v32 info; 
+    cin >> n;
+    for(int i = 0; i < n; i++) {
+        int k;
+        cin >> k;
+        if(i>0 && k!=info[i-1]){
+            s++;
         }
-    } else {
-        for (char &c : s) { 
-            c = toupper(c);
-        }
-    }
-
-    cout << s << endl;
+        info.push_back(k);
 }
-
+    cout << s <<endl;
+}
 int main()
 {
-    solve();
+solve();
     return 0;
-}
+}   
