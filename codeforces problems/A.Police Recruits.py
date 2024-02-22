@@ -1,0 +1,19 @@
+n=int(input())
+L=list(map(int,input().split()))
+s=0
+v=0
+c=0
+L.append(0)
+i=0
+while(i<n):
+    while(L[i]>0):
+        s=s+L[i]
+        i=i+1
+    while(L[i]==-1):
+        c=c+1
+        i=i+1
+    if(c-s>0):
+        v=v+c-s
+        c=0
+        s=0
+print(v)

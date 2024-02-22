@@ -1,0 +1,12 @@
+n=int(input())
+L=list(map(int,input().split()))
+L.sort()
+s=0
+i=n
+while(s<=sum(L[0:i])):
+    s+=L[i-1]
+    i-=1
+if(n==1):
+    print(1)
+else:
+    print(n-i)
