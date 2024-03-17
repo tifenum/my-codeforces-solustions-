@@ -53,28 +53,50 @@ double eps = 1e-12;
  
 
 void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
-    v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
-    }
+    ll n,mux=0,count=0;
+    cin>>n;
+    v64 a(n),c;
+    map<ll,ll> g;
+    set<ll> r;
     for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
-            }
+        cin>>a[i];
+        g[a[i]]++;
+    }
+    sort(a.begin(),a.end());
+    if(a[0]!=0){
+        cout<<0<<endl;
+        return;
+    }
+    ll k=0;
+    while(k<n){
+        if(g[a[k]]>=2){
+            c.push_back(a[k]);
+            k+=g[a[k]];
+            continue;
+        }
+        else{
+            count++;
+        }
+        if(count%2==1){
+            c.push_back(a[k]);
+        }
+        k++;
+    }
+    for(int i=0;i<c.size();i++){
+        if(c[i]!=i){
+            cout<<i<<endl;
+            return;
         }
     }
-    cout<<s<<endl;
-}
+    cout<<c.size()<<endl;
+    }
 int main()
 {
     fast_cin();
     ll t;
     cin >> t;
     for(int it=1;it<=t;it++) {
-         solve();
+        solve();
     }
     return 0;
 }

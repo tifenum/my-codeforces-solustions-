@@ -53,28 +53,28 @@ double eps = 1e-12;
  
 
 void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
-    v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
-    }
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
-            }
+    string s;
+    ll sum=0,ss=0;
+    cin>>s;
+    for(int i =0;i<s.size();i++){
+        if(s[i]=='4' || s[i]=='7'){
+            sum++;
         }
     }
-    cout<<s<<endl;
+    string h=to_string(sum);
+    for(int i=0;i<h.size();i++){
+            if(h[i]=='4' || h[i]=='7'){
+            ss++;
+        }
+    }
+    if(ss==h.size()){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }    
 }
 int main()
 {
-    fast_cin();
-    ll t;
-    cin >> t;
-    for(int it=1;it<=t;it++) {
-         solve();
-    }
-    return 0;
+solve();
 }

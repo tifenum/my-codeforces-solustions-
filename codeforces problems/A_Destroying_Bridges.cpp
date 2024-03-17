@@ -53,20 +53,13 @@ double eps = 1e-12;
  
 
 void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
-    v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
+    ll n,k,s=0,v=1,sum=(n*(n-1))/2;
+    cin>>n>>k;
+    if(k>=n-1){
+        cout<<1<<endl;
+        return;
     }
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
-            }
-        }
-    }
-    cout<<s<<endl;
+    cout<<n<<endl;
 }
 int main()
 {
@@ -74,7 +67,7 @@ int main()
     ll t;
     cin >> t;
     for(int it=1;it<=t;it++) {
-         solve();
+        solve();
     }
     return 0;
 }

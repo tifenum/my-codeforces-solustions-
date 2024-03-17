@@ -52,29 +52,59 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
-    v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
+// void solve(){
+//     ll n;
+//     cin>>n;
+//     v64 a(n),b;
+//     for(int i=0;i<n;i++){
+//         cin>>a[i];
+//     }
+//     b.push_back(a[0]);
+//     for(int i=1;i<n;i++){
+//         b[i]=(a[i]+b[i-1]);
+//         if(a[i]-b[i-1]<0){
+//             cout<<-1<<endl;
+//             return;
+//         }
+//     }
+//     for(int i=0;i<n;i++){
+//         cout<<b[i]<<" ";
+//     }
+//     cout<<endl;
+
+// }
+void solve() {
+    ll n;
+    cin >> n;
+    v64 d(n), a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> d[i];
     }
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
-            }
+    // d[1]=a[1]
+    // d[i]=a[i]-a[i-1]
+    // d[i]=a[i-1]-a[i]
+    a[0] = d[0]; // Initialize the first element of b
+    for (int i = 1; i < n; i++) {
+        a[i] = d[i] + a[i - 1]; // Compute cumulative sum and store in b
+        if (a[i - 1]-d[i]  >= 0 && d[i]!=0) {
+            // cout<<a[i-1]<<" "<<d[i]<<endl;
+            cout << -1 << endl;
+            return;
         }
     }
-    cout<<s<<endl;
+    for (int i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+    cout << endl;
 }
+
 int main()
 {
     fast_cin();
     ll t;
     cin >> t;
     for(int it=1;it<=t;it++) {
-         solve();
+        solve();
     }
     return 0;
 }

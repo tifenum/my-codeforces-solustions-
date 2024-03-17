@@ -19,7 +19,8 @@
 #include <stack>
 #include <iomanip>
 #include <fstream>
- 
+#include <numeric>
+
 using namespace std;
  
 typedef long long ll;
@@ -53,20 +54,23 @@ double eps = 1e-12;
  
 
 void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
+    ll n;
+    cin>>n;
+    ll c=-1;
     v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
+    map<ll,ll> b;
+    for(int p=0;p<n;p++){
+        cin>>a[p];
+        b[a[p]]=p+1;
     }
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
+    for (const auto& pair : b) {
+        for(const auto& pipi : b){
+            if(__gcd(pair.first,pipi.first)==1 && c<(pair.second+pipi.second)){
+                c=pair.second+pipi.second;
             }
         }
     }
-    cout<<s<<endl;
+    cout<<c<<endl;
 }
 int main()
 {
@@ -74,7 +78,7 @@ int main()
     ll t;
     cin >> t;
     for(int it=1;it<=t;it++) {
-         solve();
+        solve();
     }
     return 0;
 }

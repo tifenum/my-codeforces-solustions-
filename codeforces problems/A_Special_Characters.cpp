@@ -51,22 +51,21 @@ double eps = 1e-12;
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
  
-
 void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
-    v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
-    }
-    for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
-            }
+    ll n;
+    string result;
+    cin>>n;
+    if(n%2==1){cout<<"NO"<<endl;
+    return;}
+    cout<<"YES"<<endl;
+    for (char c = 'A'; c <= 'Z'; ++c) {
+        result += c;
+        result += c;
+        if(result.size()==n){
+            cout<<result<<endl;
+            return;
         }
     }
-    cout<<s<<endl;
 }
 int main()
 {
@@ -74,7 +73,7 @@ int main()
     ll t;
     cin >> t;
     for(int it=1;it<=t;it++) {
-         solve();
+        solve();
     }
     return 0;
 }

@@ -50,23 +50,40 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
-
+bool issorted(v64 a){
+    v64 b=a;
+    sort(b.begin(),b.end());
+    return(a==b);
+}
 void solve(){
-    ll n,x,y,s=0;
-    cin>>n>>x>>y;
+    ll n;
+    cin>>n;
     v64 a(n);
-    for(int k=0;k<n;k++){
-        cin>>a[k];
-    }
     for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((a[i]+a[j])%x==0 && (a[i]-a[j])%y==0){
-                s++;
-            }
-        }
+        cin>>a[i];
     }
-    cout<<s<<endl;
+    if(issorted(a)){
+        cout<<"YES"<<endl;
+        return;
+    }
+    ll i=n-1;
+    while(i>0){
+        if(a[i]<a[i-1]){
+            string f = to_string(a[i-1]);
+            v64 g(f.size()+1);
+            for(int j=0;j<f.size();j++){
+                g[j] = f[j] - '0';
+            }
+            g[f.size()]=(a[i]);
+            if(!issorted(g)){
+                cout<<"NO"<<endl;
+                return;
+            }
+            a[i-1]=g[0];
+        }
+        i--;
+    }
+    cout<<"YES"<<endl;
 }
 int main()
 {
@@ -74,7 +91,7 @@ int main()
     ll t;
     cin >> t;
     for(int it=1;it<=t;it++) {
-         solve();
+        solve();
     }
     return 0;
 }
