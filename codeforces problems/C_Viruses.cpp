@@ -37,9 +37,7 @@ Virus& findbyid(ll id) {
             return v;
         }
     }}
-bool compareByPosition(const Module& a, const Module& b) {
-    return a.position > b.position;
-}
+
 
 void solve() {
     ll n, m, q,num=0;
@@ -79,7 +77,7 @@ void solve() {
                 num++;
                 continue;
             }
-            if(a.capacity>0){
+            if(a.capacity>0){ 
                 o.status=false;
                 continue;
             }
