@@ -12,24 +12,40 @@ const ll MOD = 1e9 + 7;
 #define input(n,a) for(int i=0;i<n;i++) cin>>a[i]
 #define output(a) for(int i=0;i<a.size();i++) cout<<a[i]<<' ' 
 void solve(){
-ll n,a,b,c;
-cin>>n;
-v64 coin(3);
-input(3,coin);
-v64 dp(n+1,-1);
-dp[0]=0;
-for(int i=1;i<=n;i++){
-    for(int j=0;j<3;j++){
-        if(coin[j]>i || dp[i-coin[j]]==-1){
-            continue;
-        }
-        dp[i]=max(dp[i],dp[i-coin[j]]+1);
+    ll n,m,k;
+    cin>>n>>m>>k;
+    for(int i=0;i<n;i++){
+
     }
-}
-cout<<dp[n]<<endl;;
+    if(m==1){
+        cout<<"NO"<<endl;
+        return;
+    }
+    if(n%m==0){
+        if(k>=(((m-1)*n)/m)){
+            cout<<"NO"<<endl;
+        }
+        else{
+            cout<<"YES"<<endl;
+        }
+    }
+    else{
+        ll p=n/m;
+        ll i=n%m;  
+        if(k>=((m-1)*p)+i-1){
+            cout<<"NO"<<endl;
+        }
+        else{
+            cout<<"YES"<<endl;
+        }
+    }
 }
 signed main()
 {
-FAST ;
-solve();
+    FAST ;
+    ll t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
 }

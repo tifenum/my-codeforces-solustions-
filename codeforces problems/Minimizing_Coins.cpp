@@ -59,19 +59,19 @@ vector<ll> dp(x+1,INF);
 for(int i=0;i<n;i++){
     cin>>coin[i];
 }
-dp[0]=0;
-for(int i=1;i<=x;i++){
-    for(int j=0;j<n;j++){
-        if(coin[j]>i || dp[i-coin[j]]==INF){
-            continue;
+    dp[0]=0;
+    for(int i=1;i<=x;i++){
+        for(int j=0;j<n;j++){
+            if(coin[j]>i || dp[i-coin[j]]==INF){
+                continue;
+            }
+            dp[i]=min(dp[i],dp[i-coin[j]]+1);
         }
-        dp[i]=min(dp[i],dp[i-coin[j]]+1);
     }
-}
-for(int i=0;i<=x;i++){
-    cout<<dp[i]<<" ";
-}
-cout<<endl;
+// for(int i=0;i<=x;i++){
+//     cout<<dp[i]<<" ";
+// }
+// cout<<endl;
 if(dp[x]!=INF){
 cout<<dp[x]<<endl;
 return;

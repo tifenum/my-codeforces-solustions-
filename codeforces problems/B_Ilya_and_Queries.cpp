@@ -11,25 +11,34 @@ const ll MOD = 1e9 + 7;
 #define fr(i,s,e) for(int i = s; i < e; i++)
 #define input(n,a) for(int i=0;i<n;i++) cin>>a[i]
 #define output(a) for(int i=0;i<a.size();i++) cout<<a[i]<<' ' 
-void solve(){
-ll n,a,b,c;
-cin>>n;
-v64 coin(3);
-input(3,coin);
-v64 dp(n+1,-1);
-dp[0]=0;
-for(int i=1;i<=n;i++){
-    for(int j=0;j<3;j++){
-        if(coin[j]>i || dp[i-coin[j]]==-1){
-            continue;
-        }
-        dp[i]=max(dp[i],dp[i-coin[j]]+1);
-    }
-}
-cout<<dp[n]<<endl;;
-}
+
 signed main()
 {
-FAST ;
-solve();
-}
+    FAST ;
+    string s;
+    cin>>s;
+    ll t;
+    cin>>t;
+    ll p=s.size();
+    vector<int> dp(p+1);
+    dp[0]=0;
+    for(int i=1;i<p;i++){
+        if(s[i-1]==s[i]){
+            dp[i]=dp[i-1]+1;
+        }
+        else{
+            dp[i]=dp[i-1];
+
+        }
+    }
+    // dp[p]=dp[p-1]+dp[1];
+    // output(dp);
+    // cout<<endl;
+    while(t--){
+        ll n,m;
+        cin>>n>>m;
+        cout<<dp[m-1]-dp[n-1]<<endl;
+
+        // cout<<sum<<endl;
+    }
+}   
