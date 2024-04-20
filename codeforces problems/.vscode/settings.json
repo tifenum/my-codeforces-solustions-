@@ -92,7 +92,10 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "ccomplex": "cpp"
+        "ccomplex": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "xiosbase": "cpp"
     },
     "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe"
 }
