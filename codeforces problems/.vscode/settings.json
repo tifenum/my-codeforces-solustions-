@@ -95,7 +95,12 @@
         "ccomplex": "cpp",
         "queue": "cpp",
         "stack": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp",
+        "ios": "cpp"
     },
     "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe"
 }

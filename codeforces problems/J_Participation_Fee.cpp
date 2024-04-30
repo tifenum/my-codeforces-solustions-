@@ -50,24 +50,17 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
 
 void solve(){
-ll n,x;
+ll n,x,sum=0;
 cin>>n>>x;
-v64 coins(n);
-for(int i=0;i<n;i++){
-    cin>>coins[i];
+if(x>n){
+    sum+=x/n;
 }
-v64 dp(x+1,0);
-dp[0]=1;
-for(int i=1;i<=x;i++){
-    for(int j=0;j<n;j++){
-        if(coins[j]>i || dp[i-coins[j]]==0) continue;
-        dp[i]=(dp[i]+dp[i-coins[j]])%1000000007;
-    }
+if(x%n!=0){
+    sum++;
 }
-cout<<dp[x]<<endl;
+cout<<sum<<endl;
 }
 int main()
 {

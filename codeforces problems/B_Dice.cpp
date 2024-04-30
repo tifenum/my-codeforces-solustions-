@@ -50,25 +50,32 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
 
 void solve(){
-ll n,x;
-cin>>n>>x;
-v64 coins(n);
-for(int i=0;i<n;i++){
-    cin>>coins[i];
-}
-v64 dp(x+1,0);
-dp[0]=1;
-for(int i=1;i<=x;i++){
-    for(int j=0;j<n;j++){
-        if(coins[j]>i || dp[i-coins[j]]==0) continue;
-        dp[i]=(dp[i]+dp[i-coins[j]])%1000000007;
+    ll n,a,b;
+    cin>>n>>a>>b;
+    n=n*6;
+    vector<ll> dp(n,0);
+    dp[0]=1;
+    for(ll i=1;i<n+1;i++){
+        for(int j=1;j<=6;j++){
+            if(i - j >= 0) {
+                dp[i] = (dp[i] + dp[i-j]) % 1000000007;
+            }
+        }
     }
+    float sum1=0;
+    float sum2=0;
+    for(int i=0;i<n*6;i++){
+        if(i<=b && i>=a){
+            sum1+=dp[i];
+        }
+        sum2+=dp[i];
+    }
+    float u=round((sum1/sum2)*1e6)/1e6;
+    cout<<fixed<<setprecision(6)<<u<<endl;
 }
-cout<<dp[x]<<endl;
-}
+
 int main()
 {
 solve();
