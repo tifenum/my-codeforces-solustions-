@@ -4,11 +4,6 @@
         "prefix": "varo", 
         "body": [ 
 "//the moment of glory requires a lifetime of suffering"
-"//BBBBBBB   AAAAA   CCCCCC   HH    HH   K    K   AAAAA"
-"//BB    BB AA   AA CC        HH    HH   K  K    AA   AA"
-"//BBBBBBB  AAAAAAA CC        HHHHHHHH   KKK     AAAAAAA"
-"//BB    BB AA   AA CC        HH    HH   K   K   AA   AA"
-"//BBBBBBB  AA   AA  CCCCCC   HH    HH   K    K  AA   AA"
 "#include <bits/stdc++.h>"
 "#define ll long long "
 "#define FAST ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)"
