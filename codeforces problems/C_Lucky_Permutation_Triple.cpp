@@ -16,41 +16,33 @@ int lcm(int a, int b) { return a * (b / gcd(a, b)); }
 void solve(){
     ll n;
     cin>>n;
-    v64 a(n);
-    input(n,a);
-    ll mx=n,mn=1,i=0,j=n-1;
-    while(i<j){
-        if(a[i]==mn || a[i]==mx){
-            if(a[i]==mn){
-                mn++;
-            }
-            else if(a[i]==mx){
-                mx--;
-            }
-            i++;
-        }
-        if(a[j]==mx || a[j]==mn){
-            if(a[j]==mn){
-                mn++;
-            }
-            else if(a[j]==mx){
-                mx--;
-            }
-            j--;
-        }
-        if((a[i]!=mn && a[i]!=mx) && (a[j]!=mx && a[j]!=mn) && i!=j){
-            cout<<i+1<<" "<<j+1<<endl;
-            return;
-        }
+    if(n%2==0){
+        cout<<-1<<endl;
+        return;
     }
-    cout<<-1<<endl;
+    vector<vector<int>> a(3, vector<int>(n, 0));
+    for(int i = 0; i < n; i++){
+        a[0][i] = i;
+    }
+        a[1][0] = n-1;
+    for(int i = 0; i < n-1; i++){
+        a[1][i+1] = i;
+    }
+    a[1][n-1] = n-2;
+    for(int i=0;i<n;i++){
+        a[2][i]=(a[0][i]+a[1][i])%n;
+    }
+    for(int i=0;i<3;i++){
+        for(int j=0;j<n;j++){
+            cout<<a[i][j]<<' ';
+        }
+        cout<<endl;
+    }
+
 }
 signed main()
 {
     FAST ;
     ll t;
-    cin>>t;
-    while(t--){
-        solve();
-    }
+solve();
 }

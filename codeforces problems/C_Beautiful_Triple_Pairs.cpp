@@ -14,27 +14,32 @@ int lcm(int a, int b) { return a * (b / gcd(a, b)); }
 #define input(n,a) for(int i=0;i<n;i++) cin>>a[i]
 #define output(a) for(int i=0;i<a.size();i++) cout<<a[i]<<' ' 
 void solve(){
-    ll n;
+    ll n,ans=0;
     cin>>n;
     v64 a(n);
-    vector<vector<ll>> c;
+    map<vector<ll>,ll> mp;
     input(n,a);
     for(int i=0;i<n-2;i++){
-        v64 f;
-        f.push_back(a[i+2]);
-        f.push_back(a[i+1]);
-        f.push_back(a[i]);
-        c.push_back(f);
-    }
-    ll ans=0;
-    for(int i=0;i<c.size();i++){
-        for(int j =i+1;j<c.size();j++){
-            if((c[i][0]==c[j][0] && c[i][1]==c[j][1] && c[i][2]!=c[j][2]) || (c[i][0]!=c[j][0] && c[i][1]==c[j][1] && c[i][2]==c[j][2]) || (c[i][0]==c[j][0] && c[i][1]!=c[j][1] && c[i][2]==c[j][2])){
-                ans++;
-            }
+        if(mp[{a[i],a[i+1],0}]>0){
+            ans+=mp[{a[i],a[i+1],0}];
         }
+        if(mp[{a[i],0,a[i+2]}]>0){
+            ans+=mp[{a[i],0,a[i+2]}];
+        }
+        if(mp[{0,a[i+1],a[i+2]}]>0){
+            ans+=mp[{0,a[i+1],a[i+2]}];
+        }
+        ans-=3*mp[{a[i],a[i+1],a[i+2]}];
+        vector<ll> temp;
+        mp[{a[i],a[i+1],0}]++;
+        // cout<<a[i]<<" "<<a[i+1]<<" "<<0<<endl;
+        mp[{a[i],0,a[i+2]}]++;
+        // cout<<a[i]<<" "<<0<<" "<<a[i+2]<<endl;
+        mp[{0,a[i+1],a[i+2]}]++;
+        // cout<<0<<" "<<a[i+1]<<" "<<a[i+2]<<endl;
+        mp[{a[i],a[i+1],a[i+2]}]++;
+        // cout<<ans<<endl;
     }
-    for(int i=0;i<)
     cout<<ans<<endl;
 }
 signed main()
