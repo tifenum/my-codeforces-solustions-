@@ -58,7 +58,7 @@
             }
             cout<<r-L+2<<endl;
         }
-    }
+    }   
     signed main()
     {
         FAST ;
