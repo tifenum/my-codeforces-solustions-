@@ -14,18 +14,35 @@ int lcm(int a, int b) { return a * (b / gcd(a, b)); }
 #define input(n,a) for(int i=0;i<n;i++) cin>>a[i]
 #define output(a) for(int i=0;i<a.size();i++) cout<<a[i]<<' ' 
 void solve(){
-    ll n,d,k;
-    cin>>n>>d>>k;
+    ll n,x;
+    cin>>n>>x;
+    map<ll,ll> a,b;
+    for(int i=0;i<n;i++){
+        ll h;
+        cin>>h;
+        a[h]++;
+    }
+    ll k=0,c=0,mx=0;
+    for(int i=0;i<n;i++){
+        if(a[i]>=1){
+            mx++;
+            a[i+x]+=a[i]-1;
+            a[i]=1;
+        }
+        else{
+            cout<<mx<<endl;
+            return;
+        }
+    }
+    cout<<mx<<endl;
 
 }
 signed main()
 {
     FAST ;
-        ll n,d,k;
-        cin>>n>>d>>k;
-    l
+    ll t;
     cin>>t;
     while(t--){
         solve();
     }
-}   
+}
