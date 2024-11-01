@@ -8,17 +8,16 @@ typedef vector<ll> v64;
 const ll MOD = 1e9 + 7;
 
 void solve() {
-    int N = 10e5; // Adjust N as per the problem's constraints, here we use 1000 for feasibility
+    int N = 10e5;
     ll t;
     cin >> t;
 
-    // Initialize Pascal's Triangle with binomial coefficients
     vector<vector<int>> C(N+1, vector<int>(N+1, 0));
     for (int n = 0; n <= N; n++) {
         C[n][0] = 1;
         C[n][n] = 1;
         for (int k = 1; k < n; k++)
-            C[n][k] = (C[n - 1][k] + C[n - 1][k - 1]) % MOD; // Use MOD to avoid overflow
+            C[n][k] = (C[n - 1][k] + C[n - 1][k - 1]) % MOD; 
     }
 
     v64 a(t), b(t);
